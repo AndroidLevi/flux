@@ -23,6 +23,7 @@ public class Dispatcher {
 
     Dispatcher() {}
 
+    //这里的注册只是添加到List集合，不是Strore类里面的EventBus的注册
     public void register(final Store store) {
         if (!stores.contains(store)) {
             stores.add(store);
@@ -38,7 +39,8 @@ public class Dispatcher {
     }
 
     private void post(final Action action) {
-        for (Store store : stores) {
+        for (Store store : stores) {//注意这里的post会遍历Store集合里面的所有，话句话说，就是所有的
+                                    //store都会发送action
             store.onAction(action);
         }
     }

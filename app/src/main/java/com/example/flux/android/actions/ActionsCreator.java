@@ -13,7 +13,7 @@ public class ActionsCreator {
 
     ActionsCreator(Dispatcher dispatcher) {
         this.dispatcher = dispatcher;
-    }
+    }//这里传入Dispatcher实例
 
     public static ActionsCreator get(Dispatcher dispatcher) {
         if (instance == null) {
@@ -26,3 +26,8 @@ public class ActionsCreator {
         dispatcher.dispatch(new MessageAction(MessageAction.ACTION_NEW_MESSAGE, message));
     }
 }
+/**
+ * 这里的做法是传入dispatcher的实例，直接在sendMessage()中进行action的分发
+ * 而不是将生成的action传给diapatcher
+ * 这里体现回调
+ */

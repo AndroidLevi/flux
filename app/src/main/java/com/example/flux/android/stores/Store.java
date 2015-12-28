@@ -1,7 +1,6 @@
 package com.example.flux.android.stores;
 
 import com.example.flux.android.actions.Action;
-import com.example.flux.android.dispatcher.Dispatcher;
 import com.squareup.otto.Bus;
 
 /**
@@ -13,7 +12,7 @@ public abstract class Store {
 
     protected Store() {
     }
-
+//让子类继承register、unregister、emitStoreChange这几个方法，子类可以直接调用这几个方法
     public void register(final Object view) {
         this.bus.register(view);
     }
@@ -24,10 +23,12 @@ public abstract class Store {
 
     void emitStoreChange() {
         this.bus.post(changeEvent());
-    }
+    }//调用下面的changeEvent方法
 
-    public abstract StoreChangeEvent changeEvent();
+    //子类重写StoreChangeEvent、onAction
+    public abstract StoreChangeEvent changeEvent();//返回类型是下面的内部类StoreChangeEvent
     public abstract void onAction(Action action);
 
-    public class StoreChangeEvent {}
+    public class StoreChangeEvent {}//这里的内部类StoreChangeEvent有什么用？
+                                    //难道这是EventBU用来标记是否有更新的标记？
 }
