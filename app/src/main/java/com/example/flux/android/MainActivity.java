@@ -88,5 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //网友的解释：在Store的变更事件会传递一个参数ChangeEvent，这个参数可以用来细力度的UI控制
     public void onStoreChange(Store.StoreChangeEvent event) {
         render(store);
+
+  //啦啦啦
     }
 }
